@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Actions Pipeline - Bug Report and Fixes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #24292f;
+            background-color: #ffffff;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #1f6feb;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #1f6feb;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            color: #238636;
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 5px solid #238636;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #424a53;
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .metadata {
+            background-color: #f6f8fa;
+            border-left: 4px solid #1f6feb;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        
+        .metadata p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', 'Monaco', monospace;
+            font-size: 0.95em;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border-left: 4px solid #d29922;
+            margin: 15px 0;
+            font-family: 'Courier New', 'Monaco', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e1e4e8;
+            margin: 30px 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        
+        table th, table td {
+            border: 1px solid #d0d7de;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        table th {
+            background-color: #f6f8fa;
+            font-weight: bold;
+            color: #24292f;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        
+        table tr:hover {
+            background-color: #f3f3f3;
+        }
+        
+        .bug-section {
+            background-color: #fffbea;
+            border-left: 4px solid #d29922;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .severity {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+        
+        .critical {
+            background-color: #da3633;
+            color: white;
+        }
+        
+        .high {
+            background-color: #d1260f;
+            color: white;
+        }
+        
+        .medium {
+            background-color: #d29922;
+            color: white;
+        }
+        
+        .fixed {
+            color: #238636;
+            font-weight: bold;
+        }
+        
+        .todo {
+            color: #d29922;
+            font-weight: bold;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li:before {
+            content: "✅ ";
+            margin-right: 10px;
+        }
+        
+        .feature-list li:before {
+            content: "✅ ";
+            margin-right: 10px;
+            color: #238636;
+        }
+        
+        .summary-table {
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .reference {
+            background-color: #f6f8fa;
+            border-left: 4px solid #1f6feb;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        a {
+            color: #1f6feb;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #e1e4e8;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media print {
+            body {
+                padding: 20px;
+            }
+            h2 {
+                page-break-after: avoid;
+            }
+            h3 {
+                page-break-after: avoid;
+            }
+            .bug-section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>GitHub Actions Pipeline - Bug Report and Fixes</h1>
+    
+    <div class="metadata">
+        <p><strong>Date:</strong> March 17, 2026</p>
+        <p><strong>Assignment:</strong> ML Model CI Pipeline</p>
+        <p><strong>Status:</strong> <span class="fixed">All Bugs Fixed and Documented</span></p>
+    </div>
+    
+    <hr>
+    
+    <h2>Executive Summary</h2>
+    <p>
+        This report documents all bugs found in the initial GitHub Actions workflow YAML file and provides detailed solutions for each issue. The corrected workflow file ensures proper CI/CD automation for the ML model training pipeline. A total of <strong>6 critical and high-priority bugs</strong> were identified and resolved.
+    </p>
+    
+    <hr>
+    
+    <h2>Bugs Identified and Fixed</h2>
+    
+    <div class="bug-section">
+        <h3>Bug #1: Missing Repository Checkout Step</h3>
+        <p><span class="severity critical">CRITICAL</span></p>
+        
+        <p><strong>Original Issue:</strong><br>
+        The workflow lacks the essential <code>actions/checkout@v4</code> step. Without checking out the repository code, the subsequent steps cannot access the source files needed for linting, testing, or dependency installation.</p>
+        
+        <p><strong>Original Code (Missing):</strong></p>
+        <pre># Step was completely absent from the workflow</pre>
+        
+        <p><strong>Fixed Code:</strong></p>
+        <pre>- name: Checkout Repository
+  uses: actions/checkout@v4</pre>
+        
+        <p><strong>Explanation:</strong><br>
+        The <code>actions/checkout@v4</code> action is mandatory as the first step in any CI/CD workflow that needs access to repository files. It clones the repository code into the runner's working directory, making all source files available for subsequent steps.</p>
+    </div>
+    
+    <div class="bug-section">
+        <h3>Bug #2: Improper YAML Indentation in `on:` Trigger Block</h3>
+        <p><span class="severity high">HIGH</span></p>
+        
+        <p><strong>Original Issue:</strong><br>
+        The <code>on:</code> section has incorrect indentation, which breaks YAML syntax:</p>
+        <pre>on:
+push:           # ❌ Should be indented under 'on:'
+branches: main  # ❌ Should be indented under 'push:'
+pull_request:   # ❌ Incorrectly formatted</pre>
+        
+        <p><strong>Fixed Code:</strong></p>
+        <pre>on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+  pull_request:</pre>
+        
+        <p><strong>Explanation:</strong><br>
+        YAML requires proper indentation to denote hierarchical structure. The <code>push:</code> and <code>pull_request:</code> should be indented under <code>on:</code> using 2 spaces. The <code>branches:</code> field is a list in YAML and must use proper list syntax with <code>-</code> markers.</p>
+    </div>
+    
+    <div class="bug-section">
+        <h3>Bug #3: Incomplete "Linter Check" Step</h3>
+        <p><span class="severity high">HIGH</span></p>
+        
+        <p><strong>Original Issue:</strong></p>
+        <pre>- name: Linter Check
+# ❌ Missing 'run:' command - step does nothing</pre>
+        
+        <p>The step has a name but no actual command to execute. This violates GitHub Actions syntax where each step must have either a <code>uses:</code> or <code>run:</code> field.</p>
+        
+        <p><strong>Fixed Code:</strong></p>
+        <pre>- name: Linter Check
+  run: python -m py_compile train.py run_experiments.py generate_report.py assemble_report.py</pre>
+        
+        <p><strong>Explanation:</strong><br>
+        The fixed version uses Python's built-in <code>py_compile</code> module to check for syntax errors in all Python scripts. This ensures code quality before proceeding with more expensive operations without requiring additional linting tools.</p>
+    </div>
+    
+    <div class="bug-section">
+        <h3>Bug #4: Incorrect Branch Trigger Logic</h3>
+        <p><span class="severity medium">MEDIUM</span></p>
+        
+        <p><strong>Original Issue:</strong></p>
+        <pre>on:
+  push:
+    branches: main  # ❌ Only triggers on main branch</pre>
+        
+        <p>The requirement was to run on every push for ALL branches EXCEPT <code>main</code>, but the original only triggers on <code>main</code>.</p>
+        
+        <p><strong>Fixed Code:</strong></p>
+        <pre>on:
+  push:
+    branches:
+      - '**'        # Include all branches
+      - '!main'     # Exclude main
+  pull_request:     # Also run on PRs</pre>
+        
+        <p><strong>Explanation:</strong><br>
+        Using <code>'**'</code> matches all branches, and <code>'!main'</code> excludes the main branch. This ensures the pipeline runs on development/feature branches for early validation while protecting the main branch with its own specific rules.</p>
+    </div>
+    
+    <div class="bug-section">
+        <h3>Bug #5: Missing Artifact Upload Step</h3>
+        <p><span class="severity medium">MEDIUM</span></p>
+        
+        <p><strong>Original Issue:</strong><br>
+        The workflow lacks the final step to upload documentation as an artifact. Project documentation wasn't being preserved across workflow runs.</p>
+        
+        <p><strong>Original Code (Missing):</strong></p>
+        <pre># No artifact upload step present</pre>
+        
+        <p><strong>Fixed Code:</strong></p>
+        <pre>- name: Upload Project Documentation
+  uses: actions/upload-artifact@v3
+  with:
+    name: project-doc
+    path: README.md</pre>
+        
+        <p><strong>Explanation:</strong><br>
+        The <code>actions/upload-artifact@v3</code> action stores the README.md file as a workflow artifact named <code>project-doc</code>. This preserves documentation and makes it available for download from the GitHub Actions tab.</p>
+    </div>
+    
+    <div class="bug-section">
+        <h3>Bug #6: Inconsistent Step Indentation and Structure</h3>
+        <p><span class="severity medium">MEDIUM</span></p>
+        
+        <p><strong>Original Issue:</strong><br>
+        The workflow has inconsistent step structure. Some steps lack proper naming or use:</p>
+        <pre>- name: Set up Python
+uses: actions/setup-python@v5  # ❌ Wrong indentation
+with:
+python-version: '3.10'         # ❌ Wrong indentation</pre>
+        
+        <p><strong>Fixed Code:</strong></p>
+        <pre>- name: Set up Python
+  uses: actions/setup-python@v5
+  with:
+    python-version: '3.10'</pre>
+        
+        <p><strong>Explanation:</strong><br>
+        All fields under a step must be properly indented. The <code>uses:</code> and <code>with:</code> keys need consistent indentation relative to the step, using two spaces per indentation level as per GitHub Actions standards.</p>
+    </div>
+    
+    <hr>
+    
+    <h2>Summary of Changes</h2>
+    
+    <table class="summary-table">
+        <thead>
+            <tr>
+                <th>Bug #</th>
+                <th>Issue</th>
+                <th>Fix Type</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Missing checkout action</td>
+                <td>Addition</td>
+                <td><span class="fixed">✅ Fixed</span></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>YAML indentation errors in <code>on:</code></td>
+                <td>Syntax correction</td>
+                <td><span class="fixed">✅ Fixed</span></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Incomplete linter check</td>
+                <td>Addition</td>
+                <td><span class="fixed">✅ Fixed</span></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Wrong branch trigger logic</td>
+                <td>Logic correction</td>
+                <td><span class="fixed">✅ Fixed</span></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Missing artifact upload</td>
+                <td>Addition</td>
+                <td><span class="fixed">✅ Fixed</span></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Inconsistent step indentation</td>
+                <td>Syntax correction</td>
+                <td><span class="fixed">✅ Fixed</span></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr>
+    
+    <h2>Corrected Workflow Features</h2>
+    
+    <p>The final corrected workflow includes:</p>
+    <ul class="feature-list">
+        <li><strong>Automated repository checkout</strong> for code access</li>
+        <li><strong>Python 3.10 setup</strong> for consistent environment</li>
+        <li><strong>Dependency installation</strong> from requirements.txt</li>
+        <li><strong>Linter checks</strong> using Python's py_compile</li>
+        <li><strong>Environment validation</strong> with PyTorch import test</li>
+        <li><strong>Documentation artifact upload</strong> for project-doc</li>
+        <li><strong>Smart branch triggering</strong> (all branches except main)</li>
+        <li><strong>Pull request support</strong> for code review workflows</li>
+    </ul>
+    
+    <hr>
+    
+    <h2>Complete Corrected Workflow Code</h2>
+    
+    <pre># .github/workflows/ml-pipeline.yml
+name: ML Model CI
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+  pull_request:
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Linter Check
+        run: python -m py_compile train.py run_experiments.py generate_report.py assemble_report.py
+
+      - name: Model Dry Test
+        run: |
+          python -c "import torch; print('Model environment ready!')"
+
+      - name: Upload Project Documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: project-doc
+          path: README.md</pre>
+    
+    <hr>
+    
+    <h2>Testing Recommendations</h2>
+    
+    <ol>
+        <li><strong>Initialize Git Repository:</strong> Run <code>git init</code> and add your remote to GitHub</li>
+        <li><strong>Push to a Feature Branch:</strong> Create and push to a branch other than main to verify the trigger works</li>
+        <li><strong>Check the Actions Tab:</strong> Monitor the GitHub Actions tab for successful Green checkmarks</li>
+        <li><strong>Verify Artifacts:</strong> Confirm that the <code>project-doc</code> artifact appears in workflow run details</li>
+        <li><strong>Test Pull Request Trigger:</strong> Create a test PR to verify PR trigger works correctly</li>
+    </ol>
+    
+    <hr>
+    
+    <h2>Key Improvements Over Original</h2>
+    
+    <table class="summary-table">
+        <thead>
+            <tr>
+                <th>Aspect</th>
+                <th>Original</th>
+                <th>Corrected</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Code Checkout</td>
+                <td>❌ Missing</td>
+                <td>✅ Present with <code>actions/checkout@v4</code></td>
+            </tr>
+            <tr>
+                <td>YAML Syntax</td>
+                <td>❌ Broken indentation</td>
+                <td>✅ Proper 2-space indentation</td>
+            </tr>
+            <tr>
+                <td>Linter Check</td>
+                <td>❌ Incomplete (no run command)</td>
+                <td>✅ Complete with py_compile validation</td>
+            </tr>
+            <tr>
+                <td>Branch Trigger</td>
+                <td>❌ Only main branch</td>
+                <td>✅ All branches except main</td>
+            </tr>
+            <tr>
+                <td>Artifact Upload</td>
+                <td>❌ Missing</td>
+                <td>✅ Uploads README.md as project-doc</td>
+            </tr>
+            <tr>
+                <td>Step Structure</td>
+                <td>❌ Inconsistent</td>
+                <td>✅ Consistent indentation throughout</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr>
+    
+    <h2>References</h2>
+    
+    <div class="reference">
+        <p>
+            <a href="https://github.com/actions/checkout" target="_blank">GitHub Actions Checkout Documentation</a><br>
+            <a href="https://github.com/actions/setup-python" target="_blank">GitHub Actions Setup Python Documentation</a><br>
+            <a href="https://github.com/actions/upload-artifact" target="_blank">GitHub Actions Upload Artifact Documentation</a><br>
+            <a href="https://yaml.org/spec/1.2/spec.html" target="_blank">YAML Syntax Guide</a><br>
+            <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions" target="_blank">GitHub Actions Workflow Syntax</a>
+        </p>
+    </div>
+    
+    <div class="footer">
+        <p><strong>Report Generated:</strong> March 17, 2026</p>
+        <p><strong>Status:</strong> All Bugs Fixed and Documented ✅</p>
+        <p>To save this report as PDF: Press Ctrl+P (or Cmd+P on Mac), then select "Save as PDF"</p>
+    </div>
+</body>
+</html>

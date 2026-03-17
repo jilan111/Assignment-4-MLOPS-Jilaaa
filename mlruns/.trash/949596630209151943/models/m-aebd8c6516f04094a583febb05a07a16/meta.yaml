@@ -1,0 +1,10 @@
+artifact_location: file:///Users/jilan/Documents/Assignmnet%203%20MLOps/mlruns/949596630209151943/models/m-aebd8c6516f04094a583febb05a07a16/artifacts
+creation_timestamp: 1773101603233
+experiment_id: '949596630209151943'
+last_updated_timestamp: 1773101604989
+model_id: m-aebd8c6516f04094a583febb05a07a16
+model_type: null
+name: model
+source_run_id: 60d2bbc8e049458baf1f9a81e2d6e479
+status: 2
+status_message: null

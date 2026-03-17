@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/jilan/Documents/Assignmnet%203%20MLOps/mlruns/389605702316310888/82bc009526554e879c8c58891b4eb786/artifacts
+end_time: 1773103820707
+entry_point_name: ''
+experiment_id: '389605702316310888'
+lifecycle_stage: active
+run_id: 82bc009526554e879c8c58891b4eb786
+run_name: capable-auk-759
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773103718640
+status: 3
+tags: []
+user_id: jilan

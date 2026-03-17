@@ -1,0 +1,23 @@
+artifact_path: file:///Users/jilan/Documents/Assignmnet%203%20MLOps/mlruns/949596630209151943/models/m-aebd8c6516f04094a583febb05a07a16/artifacts
+flavors:
+  python_function:
+    config:
+      device: null
+    data: data
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pytorch
+    pickle_module_name: mlflow.pytorch.pickle_module
+    python_version: 3.9.6
+  pytorch:
+    code: null
+    model_data: data
+    pytorch_version: 2.8.0
+mlflow_version: 3.1.4
+model_id: m-aebd8c6516f04094a583febb05a07a16
+model_size_bytes: 908365
+model_uuid: m-aebd8c6516f04094a583febb05a07a16
+prompts: null
+run_id: 60d2bbc8e049458baf1f9a81e2d6e479
+utc_time_created: '2026-03-10 00:13:23.238592'
