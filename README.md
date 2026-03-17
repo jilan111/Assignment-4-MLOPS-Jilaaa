@@ -284,6 +284,6 @@ This project demonstrates several important **MLOps practices**:
 ------------------------------------------------------------------------
 
 # Author
-
+Jilan Ismail
 MLOps Assignment Project\
 Assignment 4 -- Machine Learning Operations Pipeline
